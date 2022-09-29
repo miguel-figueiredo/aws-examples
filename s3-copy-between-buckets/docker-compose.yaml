@@ -1,0 +1,13 @@
+# docker-compose_yml
+version: '3'
+
+services:
+  aws:
+    image: localstack/localstack:0.12.6
+    container_name: aws
+    ports:
+      - 4566:4566
+    volumes:
+      - ./local-infra/aws:/docker-entrypoint-initaws.d
+    environment:
+      - SERVICES=s3
